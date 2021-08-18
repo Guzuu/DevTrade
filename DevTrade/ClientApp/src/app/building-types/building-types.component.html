@@ -1,0 +1,18 @@
+<h1 id="tableLabel">Building Types</h1>
+
+<p *ngIf="!buildingtypes"><em>Loading...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="buildingtypes">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let buildingtype of buildingtypes">
+      <td>{{ buildingtype.id }}</td>
+      <td>{{ buildingtype.name }}</td>
+    </tr>
+  </tbody>
+</table>

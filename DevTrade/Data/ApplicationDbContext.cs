@@ -17,5 +17,7 @@ namespace DevTrade.Data
             IOptions<OperationalStoreOptions> operationalStoreOptions) : base(options, operationalStoreOptions)
         {
         }
+
+        public DbSet<BuildingType> BuildingTypes { get; set; }
     }
 }

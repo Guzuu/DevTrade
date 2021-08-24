@@ -1,0 +1,14 @@
+<h3>Add new building type</h3>
+
+<form [formGroup]="buildingTypesForm" (ngSubmit)="onSubmit()">
+
+  <div>
+    <label for="name">
+      Name
+    </label>
+    <input id="name" type="text" formControlName="name">
+  </div>
+
+  <button class="button" type="submit">Add</button>
+
+</form>

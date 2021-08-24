@@ -28,6 +28,17 @@ namespace DevTrade.Controllers
         {
             return await _context.BuildingTypes.ToArrayAsync();
         }
+
+        // POST: BuildingTypes/Create
+        [HttpPost]
+        public async Task Create([FromBody]BuildingType buildingType)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(buildingType);
+                await _context.SaveChangesAsync();
+            }
+        }
     }
 }
 

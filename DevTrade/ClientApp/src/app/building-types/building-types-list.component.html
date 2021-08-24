@@ -2,6 +2,10 @@
 
 <p *ngIf="!buildingtypes"><em>Loading...</em></p>
 
+<p>
+  <a [routerLink]="['/building-types-form']">Add new type</a>
+</p>
+
 <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="buildingtypes">
   <thead>
     <tr>

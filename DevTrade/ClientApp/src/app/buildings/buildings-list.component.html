@@ -1,0 +1,26 @@
+<h1 id="tableLabel">Buildings</h1>
+
+<p *ngIf="!buildings"><em>Loading...</em></p>
+
+<p>
+  <a [routerLink]="['/buildings-form']">Add new building</a>
+</p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="buildings">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Area</th>
+      <th>Price</th>
+      <th>BuildingTypeId</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let building of buildings">
+      <td>{{ building.id }}</td>
+      <td>{{ building.area }}</td>
+      <td>{{ building.price }}</td>
+      <td>{{ building.buildingTypeId }}</td>
+    </tr>
+  </tbody>
+</table>

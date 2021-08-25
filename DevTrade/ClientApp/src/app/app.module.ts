@@ -12,11 +12,13 @@ import { AuthorizeGuard } from 'src/api-authorization/authorize.guard';
 import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
 import { BuildingTypesComponent } from './building-types/building-types-list.component';
 import { BuildingTypesFormComponent } from './building-types/building-types-form.component';
+import { BuildingsComponent } from './buildings/buildings-list.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
   { path: 'building-types-list', component: BuildingTypesComponent, canActivate: [AuthorizeGuard], runGuardsAndResolvers: 'always' },
   { path: 'building-types-form', component: BuildingTypesFormComponent, canActivate: [AuthorizeGuard], runGuardsAndResolvers: 'always' },
+  { path: 'buildings-list', component: BuildingsComponent, canActivate: [AuthorizeGuard], runGuardsAndResolvers: 'always' },
 ]
 
 @NgModule({
@@ -25,7 +27,8 @@ const routes: Routes = [
     NavMenuComponent,
     HomeComponent,
     BuildingTypesComponent,
-    BuildingTypesFormComponent
+    BuildingTypesFormComponent,
+    BuildingsComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

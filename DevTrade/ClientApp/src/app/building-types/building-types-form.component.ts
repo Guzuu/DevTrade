@@ -20,14 +20,10 @@ export class BuildingTypesFormComponent {
     private router: Router,
   ) {}
 
-  onSubmit(): void {
+  async onSubmit() {
     // Process data here
-    this.http.post<BuildingType>(this.baseUrl + 'buildingtypes', this.buildingTypesForm.value).subscribe(
-      result => { },
-      error => console.error(error)
-    );
+    await this.http.post<BuildingType>(this.baseUrl + 'buildingtypes', this.buildingTypesForm.value).toPromise();
     console.warn('Added new building type', this.buildingTypesForm.value);
-    this.buildingTypesForm.reset();
     this.router.navigate(['/building-types-list']);
   }
 }

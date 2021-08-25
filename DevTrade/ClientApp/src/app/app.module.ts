@@ -13,6 +13,12 @@ import { AuthorizeInterceptor } from 'src/api-authorization/authorize.intercepto
 import { BuildingTypesComponent } from './building-types/building-types-list.component';
 import { BuildingTypesFormComponent } from './building-types/building-types-form.component';
 
+const routes: Routes = [
+  { path: '', component: HomeComponent, pathMatch: 'full' },
+  { path: 'building-types-list', component: BuildingTypesComponent, canActivate: [AuthorizeGuard], runGuardsAndResolvers: 'always' },
+  { path: 'building-types-form', component: BuildingTypesFormComponent, canActivate: [AuthorizeGuard], runGuardsAndResolvers: 'always' },
+]
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,12 +33,9 @@ import { BuildingTypesFormComponent } from './building-types/building-types-form
     FormsModule,
     ReactiveFormsModule,
     ApiAuthorizationModule,
-    RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'building-types-list', component: BuildingTypesComponent, canActivate: [AuthorizeGuard] },
-      { path: 'building-types-form', component: BuildingTypesFormComponent, canActivate: [AuthorizeGuard] },
-    ])
+    RouterModule.forRoot(routes, { onSameUrlNavigation: 'reload' }),
   ],
+  exports: [RouterModule],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true }
   ],

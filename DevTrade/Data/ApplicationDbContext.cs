@@ -19,5 +19,6 @@ namespace DevTrade.Data
         }
 
         public DbSet<BuildingType> BuildingTypes { get; set; }
+        public DbSet<Building> Buildings { get; set; }
     }
 }

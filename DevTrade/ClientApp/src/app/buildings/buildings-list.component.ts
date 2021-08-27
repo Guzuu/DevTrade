@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router'
+import { Router } from '@angular/router';
+import { BuildingsService, Building } from './buildings.service';
 
 @Component({
   selector: 'app-buildings',
@@ -11,15 +11,10 @@ export class BuildingsComponent implements OnInit {
   public buildings: Building[];
 
   constructor(
-    @Inject('BASE_URL') private baseUrl: string,
-    private http: HttpClient,
-    private router: Router,
+    private service: BuildingsService
   ) { }
 
   ngOnInit() {
-      this.http.get<Building[]>(this.baseUrl + 'buildings').subscribe(
-      result => { this.buildings = result; },
-      error => console.error(error)
-    );
+    this.service.get().subscribe(result => this.buildings = result);
   }
 }

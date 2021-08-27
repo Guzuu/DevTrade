@@ -29,6 +29,24 @@ namespace DevTrade.Controllers
             return await _context.BuildingTypes.ToArrayAsync();
         }
 
+        // GET: BuildingTypes/Details/5
+        public async Task<BuildingType> Details(int? id)
+        {
+            if (id == null)
+            {
+                return null;
+            }
+
+            var buildingType = await _context.BuildingTypes
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (buildingType == null)
+            {
+                return null;
+            }
+
+            return buildingType;
+        }
+
         // POST: BuildingTypes/Create
         [HttpPost]
         public async Task Create([FromBody]BuildingType buildingType)

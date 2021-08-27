@@ -12,7 +12,9 @@ import { AuthorizeGuard } from 'src/api-authorization/authorize.guard';
 import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
 import { BuildingTypesComponent } from './building-types/building-types-list.component';
 import { BuildingTypesFormComponent } from './building-types/building-types-form.component';
+import { BuildingTypesService } from './building-types/building-types.service';
 import { BuildingsComponent } from './buildings/buildings-list.component';
+import { BuildingsService } from './buildings/buildings.service';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -40,7 +42,9 @@ const routes: Routes = [
   ],
   exports: [RouterModule],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true },
+    BuildingTypesService,
+    BuildingsService,
   ],
   bootstrap: [AppComponent]
 })

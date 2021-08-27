@@ -14,7 +14,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let buildingtype of buildingtypes">
+    <tr *ngFor="let buildingtype of buildingtypes" (click)="edit(buildingtype.id)">
       <td>{{ buildingtype.id }}</td>
       <td>{{ buildingtype.name }}</td>
     </tr>

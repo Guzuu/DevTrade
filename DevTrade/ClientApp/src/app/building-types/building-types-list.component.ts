@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router'
+import { BuildingTypesService, BuildingType } from './building-types.service'
 
 @Component({
   selector: 'app-building-types',
@@ -11,15 +11,15 @@ export class BuildingTypesComponent implements OnInit {
   public buildingtypes: BuildingType[];
 
   constructor(
-    @Inject('BASE_URL') private baseUrl: string,
-    private http: HttpClient,
     private router: Router,
+    private service: BuildingTypesService,
   ) { }
 
   ngOnInit() {
-      this.http.get<BuildingType[]>(this.baseUrl + 'buildingtypes').subscribe(
-      result => { this.buildingtypes = result; },
-      error => console.error(error)
-    );
+    this.service.get().subscribe(result => this.buildingtypes = result);;
+  }
+
+  editOnClick(id: number) {
+    this.router.navigate(['/building-types-form/' + id]);
   }
 }
